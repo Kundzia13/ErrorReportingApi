@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Admin Page</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+    <div align="center">
+        <p style="font-size: 40px; color: #141672;">ERROR REPORTING SYSTEM</p>
+    </div>
+    <ul class="nav nav-tabs">
+        <li role="presentation" class="active" th:action="@{/admin/home}"><a href="/admin/home">Home</a></li>
+        <li role="presentation" class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+               aria-expanded="false">
+                Reports <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="/profile">New</a></li>
+                <li><a href="/profile">Browse</a></li>
+                <li><a href="/profile">Search</a></li>
+            </ul>
+        </li>
+        <li role="presentation" class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+               aria-expanded="false">
+                Profile <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="/admin/profile">My Profile</a></li>
+                <li role="separator" class="divider"></li>
+                <li>
+                    <form th:action="@{/logout}" method="get">
+                        <button class="btn btn-md btn-danger btn-block" name="registration"
+                                type="Submit">Logout
+                        </button>
+                    </form>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>The error reporting system is a program for handling reports.</h3>
+    <h3>It enables efficient communication and recording of all existing </h3>
+    <h3>errors for better control and the work of several people in one project.</h3>
+</div>
+</body>
+</html>
