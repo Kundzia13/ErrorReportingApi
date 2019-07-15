@@ -1,16 +1,21 @@
-package pl.akademiakodu.reporting.model;
+package pl.akademiakodu.reporting.model.entities;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import java.util.HashSet;
 import java.util.Set;
 
 
 @Data
 @Entity
+@Getter
+@Setter
 @Table(name = "user")
 public class User {
 
@@ -35,6 +40,9 @@ public class User {
     @Column(name = "active")
     private int active;
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
+    @ManyToMany(mappedBy = "users")
+    private Set<Report> reports = new HashSet<Report>();
 }

@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import pl.akademiakodu.reporting.model.Comment;
+import pl.akademiakodu.reporting.model.entities.Comment;
 import pl.akademiakodu.reporting.repository.CommentRepository;
 
 @RequestMapping("/comments")

@@ -8,7 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import pl.akademiakodu.reporting.model.User;
+import pl.akademiakodu.reporting.model.entities.User;
 
 import javax.validation.Valid;
 
@@ -63,6 +63,4 @@ public class LoginController {
         modelAndView.setViewName("admin/home");
         return modelAndView;
     }
-
-
 }

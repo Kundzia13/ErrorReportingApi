@@ -1,4 +1,4 @@
-package pl.akademiakodu.reporting.model;
+package pl.akademiakodu.reporting.model.entities;
 
 import lombok.Data;
 
@@ -17,7 +17,7 @@ public class Comment {
     private Report report;
 
     @Override
-    public String toString(){
+    public String toString() {
         return getDescription();
     }
 

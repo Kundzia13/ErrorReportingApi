@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import pl.akademiakodu.reporting.model.User;
+import pl.akademiakodu.reporting.model.entities.User;
 
 @Controller
 public class UserController {
@@ -29,4 +29,14 @@ public class UserController {
         modelAndView.setViewName("admin/profile");
         return modelAndView;
     }
+
+  /* @RequestMapping(value = "/reports/new", method = RequestMethod.GET)
+    public ModelAndView report() {
+        ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        modelAndView.addObject("userFullName", user.getName() + user.getLastName());
+        modelAndView.setViewName("reports/new");
+        return modelAndView;
+    }*/
 }

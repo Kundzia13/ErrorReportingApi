@@ -3,8 +3,8 @@ package pl.akademiakodu.reporting.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import pl.akademiakodu.reporting.model.Role;
-import pl.akademiakodu.reporting.model.User;
+import pl.akademiakodu.reporting.model.entities.Role;
+import pl.akademiakodu.reporting.model.entities.User;
 import pl.akademiakodu.reporting.repository.RoleRepository;
 import pl.akademiakodu.reporting.repository.UserRepository;
 

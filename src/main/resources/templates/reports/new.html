@@ -49,7 +49,7 @@
 
     <div class="container">
         <h2>Add new report</h2>
-        <form th:object="${report}" th:action="@{/reports}" th:method="report">
+        <form th:object="${report}" th:action="@{/reports/new}" th:method="report">
             <div class="form-group">
                 <label>Topic</label>
                 <!-- th:field wykonuje id i name-->
@@ -57,6 +57,14 @@
                        class="form-control input-small"
                        placeholder="Topic" required>
             </div>
+            <label>Status</label>
+            <select class="form-control">
+                <option class="dropdown-header">Select status</option>
+                <option th:value="VERY_IMPORTANT">Very important</option>
+                <option th:value="IMPORTANT">Important</option>
+                <option th:value="NOT_IMPORTANT">Not important</option>
+                <option th:value="CLOSED" , disabled="disabled">Closed</option>
+            </select>
             <div class="form-group">
                 <label>Content</label>
                 <!-- th:field wykonuje id i name-->
@@ -64,7 +72,18 @@
                        class="form-control input-small"
                        placeholder="Content" required>
             </div>
-                <button type="submit" class="btn btn-default ">Add</button>
+            <div class="form-group">
+                <label>Users involved</label>
+                <ul>
+                    <li th:each="user : ${users}">
+                        <input type="checkbox" th:name="user" th:value="${user.id}" id="${user.id}"/>
+                        <label th:for="${user.id}"
+                               th:text="${userFullName}"></label>
+                    </li>
+                </ul>
+            </div>
+
+            <button type="submit" class="btn btn-default ">Add</button>
         </form>
     </div>
 </div>

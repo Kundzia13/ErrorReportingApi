@@ -1,4 +1,4 @@
-package pl.akademiakodu.reporting.model;
+package pl.akademiakodu.reporting.model.entities;
 
 import lombok.Data;
 
