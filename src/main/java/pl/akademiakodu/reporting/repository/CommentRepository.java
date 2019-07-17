@@ -1,8 +1,8 @@
 package pl.akademiakodu.reporting.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import pl.akademiakodu.reporting.model.entities.Comment;
 
 public interface CommentRepository extends
-        CrudRepository<Comment,Integer> {
+        JpaRepository<Comment,Integer> {
 }

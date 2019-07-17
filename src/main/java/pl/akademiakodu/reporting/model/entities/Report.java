@@ -27,4 +27,11 @@ public class Report {
             joinColumns = { @JoinColumn(name = "report_id")},
             inverseJoinColumns = { @JoinColumn(name = "user_id") })
     private Set<User> users = new HashSet<>();
+
+    @Override
+    public String toString() {
+        return "Report{" +
+                "id=" + id +
+                ", content='" + content + '}';
+    }
 }

@@ -17,7 +17,7 @@ public class ReportController {
         this.reportRepository = reportRepository;
     }
 
-    @RequestMapping(path = "/new",method = RequestMethod.GET)
+    @GetMapping("/new")
     public String addReport(ModelMap modelMap) {
       /*  List<User> userList = new ArrayList<>();
         modelMap.addAttribute("users", userList);*/
@@ -27,15 +27,11 @@ public class ReportController {
 
     @PostMapping("/new")
     public String createReport(@ModelAttribute Report report) {
-        Report newReport = new Report();
-        newReport.setReportTitle(report.getReportTitle());
-        newReport.setStatus(report.getStatus());
-        newReport.setContent(report.getContent());
-        reportRepository.save(newReport);
+        reportRepository.save(report);
 
       /*  Set<User> userList = new HashSet<>();
         report.setUsers(userList);*/
-        return "redirect:/reports/" + newReport.getId();
+        return "redirect:/reports/" + report.getId();
         // redirect - protection against adding a new id after the page is refreshed
     }
 
