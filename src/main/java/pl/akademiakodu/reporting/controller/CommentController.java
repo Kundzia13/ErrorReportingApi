@@ -1,5 +1,6 @@
 package pl.akademiakodu.reporting.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +13,7 @@ import pl.akademiakodu.reporting.repository.CommentRepository;
 @Controller
 public class CommentController {
 
+    @Autowired
     private CommentRepository commentRepository;
 
     public CommentController(CommentRepository commentRepository){

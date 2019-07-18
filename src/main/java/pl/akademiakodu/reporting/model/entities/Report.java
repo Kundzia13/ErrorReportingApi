@@ -3,6 +3,7 @@ package pl.akademiakodu.reporting.model.entities;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -33,5 +34,13 @@ public class Report {
         return "Report{" +
                 "id=" + id +
                 ", content='" + content + '}';
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }

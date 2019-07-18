@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Admin Page</title>
+    <meta charset="UTF-8">
+    <title>New Report</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -16,25 +15,25 @@
         <p style="font-size: 40px; color: #141672;">ERROR REPORTING SYSTEM</p>
     </div>
     <ul class="nav nav-tabs">
-        <li role="presentation" class="active" th:action="@{/admin/home}"><a href="/admin/home">Home</a></li>
-        <li role="presentation" class="dropdown">
+        <li role="presentation" th:action="@{/admin/home}"><a href="/admin/home">Home</a></li>
+        <li role="presentation" class="active">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                aria-expanded="false">
                 Reports <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-                <li><a href="/reports/new">New</a></li>
-                <li><a href="/profile/show">Browse</a></li>
-                <li><a href="/profile/search">Search</a></li>
+                <li><a th:action="@{/reports/new}" href="/reports/new">New</a></li>
+                <li><a th:action="@{/reports/browse}" href="/reports/browse">Browse</a></li>
+                <li><a th:action="@{/reports/search}" href="/reports/search">Search</a></li>
             </ul>
         </li>
-        <li role="presentation" class="dropdown">
+        <li role="presentation">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                aria-expanded="false">
                 Profile <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-                <li><a href="/admin/profile">My Profile</a></li>
+                <li><a th:action="@{/admin/profile}" href="/admin/profile">My Profile</a></li>
                 <li role="separator" class="divider"></li>
                 <li>
                     <form th:action="@{/logout}" method="get">
@@ -57,14 +56,13 @@
                        class="form-control input-small"
                        placeholder="Topic" required>
             </div>
-            <label>Status</label>
-            <select class="form-control">
-                <option class="dropdown-header">Select status</option>
-                <option th:value="VERY_IMPORTANT">Very important</option>
-                <option th:value="IMPORTANT">Important</option>
-                <option th:value="NOT_IMPORTANT">Not important</option>
-                <option th:value="CLOSED" , disabled="disabled">Closed</option>
-            </select>
+            <div class="form-group">
+                <label th:for="status">Status</label>
+                <select th:field="*{status}">
+                    <option th:each="status : ${T(pl.akademiakodu.reporting.model.entities.Status).values()}"
+                            th:value="${status}" th:text="${status.name}"></option>
+                </select>
+            </div>
             <div class="form-group">
                 <label>Content</label>
                 <!-- th:field wykonuje id i name-->
@@ -82,7 +80,6 @@
                     </li>
                 </ul>
             </div>
-
             <button type="submit" class="btn btn-default ">Add</button>
         </form>
     </div>

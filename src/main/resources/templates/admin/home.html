@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <meta charset="UTF-8">
     <title>Admin Page</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -17,24 +16,22 @@
     </div>
     <ul class="nav nav-tabs">
         <li role="presentation" class="active" th:action="@{/admin/home}"><a href="/admin/home">Home</a></li>
-        <li role="presentation" class="dropdown">
+        <li role="presentation">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-               aria-expanded="false">
-                Reports <span class="caret"></span>
+               aria-expanded="false">Reports<span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-                <li><a href="/reports/new">New</a></li>
-                <li><a href="/profile/show">Browse</a></li>
-                <li><a href="/profile/search">Search</a></li>
+                <li><a th:action="@{/reports/new}" href="/reports/new">New</a></li>
+                <li><a th:action="@{/reports/browse}" href="/reports/browse">Browse</a></li>
+                <li><a th:action="@{/reports/search}" href="/reports/search">Search</a></li>
             </ul>
         </li>
-        <li role="presentation" class="dropdown">
+        <li role="presentation">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-               aria-expanded="false">
-                Profile <span class="caret"></span>
+               aria-expanded="false">Profile<span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-                <li><a href="/admin/profile">My Profile</a></li>
+                <li><a th:action="@{/admin/profile}" href="/admin/profile">My Profile</a></li>
                 <li role="separator" class="divider"></li>
                 <li>
                     <form th:action="@{/logout}" method="get">
