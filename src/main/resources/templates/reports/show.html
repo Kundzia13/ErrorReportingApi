@@ -50,8 +50,10 @@
         <div class="alert alert-success" th:if="${message}">
             <strong th:if="${message}" th:text="${message}"></strong>
         </div>
-        <h3 th:text="${report.reportTitle}"></h3>
-        <p th:text="${report.content}"></p>
+        <h3 th:text="@{${report.reportTitle}}"></h3>
+        <h4>Status:</h4>
+        <p th:text="@{${report.status.name}}"></p>
+        <p th:text="@{${report.content}}"></p>
         <h4>Comments:</h4>
         <ul class="list-group">
             <li class="list-group-item" th:each="comment: ${comments}"

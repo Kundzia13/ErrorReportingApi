@@ -10,7 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor //will generate a constructor with no parameters
 @AllArgsConstructor // generates a constructor with 1 parameter for each field in your class
 public class ReportDto {
-   private Integer id;
+    private Integer id;
     private String reportTitle;
     private String content;
 }

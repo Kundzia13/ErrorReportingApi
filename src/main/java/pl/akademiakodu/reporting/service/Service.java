@@ -9,7 +9,7 @@ import pl.akademiakodu.reporting.model.entities.User;
 
 public class Service {
 
-    public static ReportDto toDto(Report model) {
+  /*  public static ReportDto toDto(Report model) {
         ReportDto dto = new ReportDto();
         dto.setId(model.getId());
         dto.setReportTitle(model.getReportTitle());
@@ -55,5 +55,5 @@ public class Service {
         model.setLastName(dto.getLastName());
         model.setActive(dto.getActive());
         return model;
-    }
+    }*/
 }

@@ -1,16 +1,20 @@
 package pl.akademiakodu.reporting.model.entities;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @Entity
+@NoArgsConstructor
 @Table(name = "report")
 public class Report {
 
@@ -35,12 +39,9 @@ public class Report {
                 "id=" + id +
                 ", content='" + content + '}';
     }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
+    public Report(String reportTitle, Status status, String content) {
+        this.reportTitle = reportTitle;
         this.status = status;
+        this.content = content;
     }
 }
