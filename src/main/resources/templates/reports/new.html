@@ -76,7 +76,7 @@
                     <li th:each="user : ${users}">
                         <input type="checkbox" th:name="user" th:value="${user.id}" id="${user.id}"/>
                         <label th:for="${user.id}"
-                               th:text="${userFullName}"></label>
+                               th:utext="${user.name} +${user.lastName}"></label>
                     </li>
                 </ul>
             </div>

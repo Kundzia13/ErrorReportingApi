@@ -40,5 +40,8 @@ public class UserService {
         userRepository.save(user);
     }
 
+    public User findUserById(String id) {
+        return userRepository.findById(id);
+    }
 }
 

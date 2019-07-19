@@ -9,4 +9,5 @@ import pl.akademiakodu.reporting.model.entities.User;
 @Repository("userRepository")
 public interface UserRepository extends JpaRepository<User,Integer > {
     User findByEmail(String email);
+    User findById(String id);
 }

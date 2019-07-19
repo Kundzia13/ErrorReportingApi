@@ -45,7 +45,19 @@
             </ul>
         </li>
     </ul>
-
+    <div class="container">
+        <h2>Add new report</h2>
+        <form th:object="${report}" th:method="report">
+            <div class="form-group">
+                <label th:for="status">Status</label>
+                <select th:name="status">
+                    <option th:each="status : ${T(pl.akademiakodu.reporting.model.entities.Status).values()}"
+                            th:value="${status}" th:text="${status.name}"></option>
+                </select>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+        </form>
+    </div>
     <div class="container">
         <h2>Search report</h2>
         <div class="search-bar container">
