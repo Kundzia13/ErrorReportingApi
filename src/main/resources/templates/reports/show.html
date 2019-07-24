@@ -58,7 +58,9 @@
             <ul>
                 <li th:each="user : ${users}">
                     <label th:for="${user.id}"
-                           th:utext="${user.name} +${user.lastName}"></label>
+                           th:utext="${user.name}"></label>
+                    <label th:for="${user.id}"
+                           th:utext="${user.lastName}"></label>
                 </li>
             </ul>
         </div>

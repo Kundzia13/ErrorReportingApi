@@ -12,10 +12,8 @@ import pl.akademiakodu.reporting.model.entities.User;
 import pl.akademiakodu.reporting.repository.ReportRepository;
 import pl.akademiakodu.reporting.repository.UserRepository;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @RequestMapping("/reports")
 @Controller
@@ -58,7 +56,6 @@ public class ReportController {
 
         Report report = new Report(titleParam, status, content);
 
-
         Set<User> userList = new HashSet<>();
         for (Integer id : userId) {
             userList.add(userRepository.getOne(id));
@@ -96,11 +93,23 @@ public class ReportController {
         return modelAndView;
     }
 
-    @RequestMapping("/search")
-    public ModelAndView search(Model model) {
+    @GetMapping("/search")
+    public ModelAndView search(@RequestParam String searchTitle,
+                               @RequestParam(value = "status") String status,
+                               Model model) {
         ModelAndView modelAndView = new ModelAndView();
+        List<Report> searchReportsList = new ArrayList<>();
+
+        searchReportsList = reportRepository.findByStatus(Status.valueOf(status))
+                .stream()
+                .filter(e -> e.getReportTitle().matches("(?i)"+"(.*)" + searchTitle +"(.*)")
+                ).collect(Collectors.toList());
+        for (Report r:searchReportsList
+             ) {
+            System.out.println(r.toString());
+        }
+        model.addAttribute("search", searchReportsList);
         modelAndView.setViewName("reports/search");
         return modelAndView;
     }
-
 }

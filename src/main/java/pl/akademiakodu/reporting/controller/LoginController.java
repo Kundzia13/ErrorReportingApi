@@ -51,14 +51,7 @@ public class LoginController {
             modelAndView.addObject("successMessage", "User has been registered successfully");
             modelAndView.addObject("user", new User());
             modelAndView.setViewName("registration");
-
         }
-     /*   List<User> userList = new ArrayList<>();
-        Iterable<User> userIterable = userRepository.findAll();
-        for (User user1 : userIterable) {
-            userList.add(user1);
-        }
-        model.addAttribute("users", userList);*/
         return modelAndView;
     }
 
