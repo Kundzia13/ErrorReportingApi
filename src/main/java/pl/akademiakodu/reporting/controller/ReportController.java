@@ -100,7 +100,7 @@ public class ReportController {
         ModelAndView modelAndView = new ModelAndView();
         List<Report> searchReportsList = new ArrayList<>();
         Iterable<Report> reportIterable;
-        if (status != null) {
+        if (status!=null) {
        reportIterable = reportRepository.findByStatus(Status.valueOf(status))
                     .stream()
                     .filter(e -> e.getReportTitle().matches("(?i)" + "(.*)" + searchTitle + "(.*)")
