@@ -46,38 +46,30 @@
         </li>
     </ul>
     <div class="container">
-        <h2>Search:</h2>
-        <form th:object="${report}" th:method="report" th:action="@{/reports/search}">
+        <h2>Search report:</h2>
+        <form th:object="${report}" th:method="search" th:action="@{/reports/search}">
             <div class="form-group">
                 <label th:for="status">Status</label>
                 <select th:name="status">
-                    <option>All</option>
+                    <option value="null" class="dropdown-header">Choose status</option>
                     <option th:each="status : ${T(pl.akademiakodu.reporting.model.entities.Status).values()}"
                             th:value="${status}" th:text="${status.name}"></option>
                 </select>
             </div>
-         <!--   <div class="search-bar container">
-                <div class="row">
-                    <div class="col s12">
-                        <form method="get">
-                            <div class="input-field">
-                                <input th:name="searchTitle" type="search"
-                                       placeholder="Search report..." required="required"
-                                       autocomplete="off"/>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>-->
+            <div class="form-group">
+                <input th:name="searchTitle" type="text"
+                       class="form-control input-small"
+                       placeholder="Search title...">
+            </div>
             <button type="submit" class="btn btn-default">Submit</button>
         </form>
-    </div>
-    <div class="container">
-        <div class="list-group">
-            <div th:each="report : ${reports}">
-                <form method="get" th:action="@{'/reports/' + ${report.id}}">
-                    <button type="submit" class="list-group-item" th:text="${report.reportTitle}"></button>
-                </form>
+        <div class="container">
+            <div class="list-group">
+                <div th:each="report : ${reports}">
+                    <form method="get" th:action="@{'/reports/' + ${report.id}}">
+                        <button type="submit" class="list-group-item" th:text="${report.reportTitle}"></button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

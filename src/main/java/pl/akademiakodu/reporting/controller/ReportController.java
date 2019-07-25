@@ -93,22 +93,30 @@ public class ReportController {
         return modelAndView;
     }
 
-    @GetMapping("/search")
-    public ModelAndView search(@RequestParam String searchTitle,
-                               @RequestParam(value = "status") String status,
+    @RequestMapping("/search")
+    public ModelAndView search(@RequestParam(required = false) String searchTitle,
+                               @RequestParam(value = "status", required = false) String status,
                                Model model) {
         ModelAndView modelAndView = new ModelAndView();
         List<Report> searchReportsList = new ArrayList<>();
-
-        searchReportsList = reportRepository.findByStatus(Status.valueOf(status))
-                .stream()
-                .filter(e -> e.getReportTitle().matches("(?i)"+"(.*)" + searchTitle +"(.*)")
-                ).collect(Collectors.toList());
-        for (Report r:searchReportsList
-             ) {
-            System.out.println(r.toString());
+        Iterable<Report> reportIterable;
+        if (status != null) {
+       reportIterable = reportRepository.findByStatus(Status.valueOf(status))
+                    .stream()
+                    .filter(e -> e.getReportTitle().matches("(?i)" + "(.*)" + searchTitle + "(.*)")
+                    ).collect(Collectors.toList());
+        } else {
+        reportIterable = reportRepository.findAll()
+                    .stream()
+                    .filter(e -> e.getReportTitle().matches("(?i)" + "(.*)" + searchTitle + "(.*)")
+                    ).collect(Collectors.toList());
         }
-        model.addAttribute("search", searchReportsList);
+        for (
+                Report report : reportIterable
+        ) {
+            searchReportsList.add(report);
+        }
+        model.addAttribute("reports", searchReportsList);
         modelAndView.setViewName("reports/search");
         return modelAndView;
     }
