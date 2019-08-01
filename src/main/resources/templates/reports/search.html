@@ -51,7 +51,7 @@
             <div class="form-group">
                 <label th:for="status">Status</label>
                 <select th:name="status">
-                    <option class="dropdown-header">Choose status</option>
+                    <option class="dropdown-header"></option>
                     <option th:each="status : ${T(pl.akademiakodu.reporting.model.entities.Status).values()}"
                             th:value="${status}" th:text="${status.name}"></option>
                 </select>

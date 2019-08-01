@@ -100,13 +100,13 @@ public class ReportController {
         ModelAndView modelAndView = new ModelAndView();
         List<Report> searchReportsList = new ArrayList<>();
         Iterable<Report> reportIterable;
-        if (status!=null) {
-       reportIterable = reportRepository.findByStatus(Status.valueOf(status))
+        if (status==null || status=="") {
+            reportIterable = reportRepository.findAll()
                     .stream()
                     .filter(e -> e.getReportTitle().matches("(?i)" + "(.*)" + searchTitle + "(.*)")
                     ).collect(Collectors.toList());
         } else {
-        reportIterable = reportRepository.findAll()
+            reportIterable = reportRepository.findByStatus(Status.valueOf(status))
                     .stream()
                     .filter(e -> e.getReportTitle().matches("(?i)" + "(.*)" + searchTitle + "(.*)")
                     ).collect(Collectors.toList());
